@@ -2,8 +2,14 @@ package kr.co.tjoeun.jickbangcopy_200812
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kr.co.tjoeun.jickbangcopy_200812.adapters.RoomAdapter
+import kr.co.tjoeun.jickbangcopy_200812.datas.Room
 
 class MainActivity : BaseActivity() {
+
+    val mRoomList = ArrayList<Room>()
+
+//    lateinit var mRoomAdapter: RoomAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
