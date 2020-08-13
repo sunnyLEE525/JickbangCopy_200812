@@ -21,14 +21,19 @@ class MainActivity : BaseActivity() {
 //        두 개의 함수에 적힌 코드는 반드시 onCreate내부에서 실행 시켜줘야 => 실제로 동작함.
         setUpEvents()
         setValues()
-}
+    }
+
     override fun setUpEvents() {
 //        메인화면의 이벤트 관련 코드 모아둘 장소
+
+//       리스트뷰의 각 줄이 눌리는 시점의 이벤트 => 세번째 변수의 이름 확인(position or i)
         roomListView.setOnItemClickListener { adapterView, view, position, l ->
 
+//            눌린 위치에 해당하는 방이 어떤 방인지 가져오기
             val clickedRoom = mRoomList[position]
 
-            val myIntent = Intent (mContext, ViewRoomDetailActivity::class.java)
+//            상세보기 화면으로 이동 => 해당 방을 통째로 넘겨서 이동 (Serializable 활용)
+            val myIntent = Intent(mContext, ViewRoomDetailActivity::class.java)
 
 //            Room.kr에 serialized를 상속받아야 putExtra의 에러가 사라진다.
 
@@ -53,7 +58,12 @@ class MainActivity : BaseActivity() {
         mRoomList.add(Room(85000, "서울시 동대문구", 5, "동대문구의 5층 방 입니다."))
 
 //        초기화를 미뤄둔 어댑터를 실제로 초기화하자
+//        (어떤 화면에서 ListView를 띄울껀지?, 어떤 모양으로 줄들을 그릴건지?, 어떤 목록을 뿌려줄지?)
+//        RoomAdapter의 생성자를 만들 때 요구했던 자료들을 넣어준다.
         mRoomAdapter = RoomAdapter(mContext, R.layout.room_list_item, mRoomList)
+
+//        방목록 리스트뷰의 어댑터로 => mRoomAdapter를 지정해 주자.
+//        실제로 리스트뷰에 목록을 뿌려주게 된다.
         roomListView.adapter = mRoomAdapter
 
     }
