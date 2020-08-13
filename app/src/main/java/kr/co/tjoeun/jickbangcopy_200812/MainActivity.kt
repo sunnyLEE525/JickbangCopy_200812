@@ -1,5 +1,6 @@
 package kr.co.tjoeun.jickbangcopy_200812
 
+import android.content.Intent
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 import kr.co.tjoeun.jickbangcopy_200812.adapters.RoomAdapter
@@ -19,6 +20,17 @@ class MainActivity : BaseActivity() {
 }
     override fun setUpEvents() {
 //        메인화면의 이벤트 관련 코드 모아둘 장소
+        roomListView.setOnItemClickListener { adapterView, view, position, l ->
+
+            val clickedRoom = mRoomList[position]
+
+            val myIntent = Intent (mContext, ViewRoomDetailActivity::class.java)
+
+//            Room.kr에 serialized를 상속받아야 putExtra의 에러가 사라진다.
+
+            myIntent.putExtra("roomInfo", clickedRoom)
+            startActivity(myIntent)
+        }
     }
 
     override fun setValues() {
