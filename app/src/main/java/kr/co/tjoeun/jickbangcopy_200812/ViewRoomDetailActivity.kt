@@ -19,11 +19,13 @@ class ViewRoomDetailActivity : BaseActivity() {
     }
 
     override fun setValues() {
-
-//        as Room 처럼 데이터 클래스로 캐스팅 해줘야 사용 가능
+        
+//        메인화면에서 넘겨준 Room 가져오기.
+//        넘겨줄 때 Serializable 형태로 넘겨줌 => Room으로 변환해서 저장해야 사용 가능. : as Room
 
         val room = intent.getSerializableExtra("roomInfo") as Room
 
+//        실제 데이터 화면
         priceTxt.text = room.getFormattedPrice()
         descTxt.text = room.description
         addressTxt.text = room.address
