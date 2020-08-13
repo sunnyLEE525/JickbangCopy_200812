@@ -10,6 +10,8 @@ class MainActivity : BaseActivity() {
 
     val mRoomList = ArrayList<Room>()
 
+    //객체 대입(초기화)은 나중에 하겠다.
+    //리스트뷰에 실제 xml+데이터객체 조합 => 뿌려주는 역할 : Adapter
     lateinit var mRoomAdapter: RoomAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

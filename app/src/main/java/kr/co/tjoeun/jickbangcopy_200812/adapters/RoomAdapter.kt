@@ -53,6 +53,8 @@ class RoomAdapter(
             floorStr = "지하 ${-data.floor}층"
         }
 
+
+
         addressAndFloorTxt.text = "${data.address},${floorStr}"
 
         return row
